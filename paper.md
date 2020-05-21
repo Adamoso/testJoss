@@ -11,7 +11,7 @@ authors:
     orcid: 0000-0002-4805-9015
     affiliation: 1
 affiliations:
- - name: MI^2 LAB
+ - name: Faculty of Mathematics and Information Science, Warsaw University of Technology
    index: 1
 date: 21 May 2020
 bibliography: paper.bib
@@ -72,15 +72,17 @@ The deployed explainer is active as an application compliant to the representati
 
 ![Break Down (1) and Ceteris Paribus (2) plots for example model on Titanic data \label{fig:plots}](plots2.png)
 
-* Break Down [@Breakdown:2018] plots \autoref{fig:plots} present the contribution of each variable to the prediction. There are two hooks associated with this feature, one creates the plot and returns it as an image, the other one is a description consisting of crucial information that can be gathered from the Break Down plot \autoref{fig:example} and is returned as a string.
+\newpage
 
-* Ceteris Paribus @Biecek:2018 plots \autoref{fig:plots} from the Ingredients R package present model responses around a single point in the feature space. It enables the user to view possible changes in model predictions allowing for changes in a single variable while keeping all other features constant. The results are also available as both a plot and a text description summing up crucial conclusions.
+* Break Down [@Breakdown:2018] plots present the contribution of each variable to the prediction. There are two hooks associated with this feature, one creates the plot and returns it as an image, the other one is a description consisting of crucial information that can be gathered from the Break Down plot \autoref{fig:example} and is returned as a string.
+
+* Ceteris Paribus [@Biecek:2018] plots from the Ingredients R package present model responses around a single point in the feature space. It enables the user to view possible changes in model predictions allowing for changes in a single variable while keeping all other features constant. The results are also available as both a plot and a text description summing up crucial conclusions.
 
 # Usage
 
 ![Basic illustration of Swagger UI created for example Titanic model using xai2cloud \label{fig:swagger}](api2.png)
 
-The application created by xai2cloud can be utilized in various ways. There is a built-in Swagger User Interface \autoref{fig:swagger} available at the droplet's server. Swagger is a set of open-source tools that enhance REST application building process. One of the tools available is Swagger UI which presents an interactive API documentation. Therefore it can be used as a basic standalone solution for sharing predictive models results. The opportunities created by this solution however allow for use in much more complex projects. The ability granted by xai2cloud to deploy multiple models on one droplet without any further configuration enables the users to create applications gathering model data from the whole organization. The package is built in a way to encourage using it as an external data source for projects concerning predictive modeling.
+The application created by xai2cloud can be utilized in various ways. There is a built-in Swagger User Interface (\autoref{fig:swagger}) available at the droplet's server. Swagger is a set of open-source tools that enhance REST application building process. One of the tools available is Swagger UI which presents an interactive API documentation. Therefore it can be used as a basic standalone solution for sharing predictive models results. The opportunities created by this solution however allow for use in much more complex projects. The ability granted by xai2cloud to deploy multiple models on one droplet without any further configuration enables the users to create applications gathering model data from the whole organization. The package is built in a way to encourage using it as an external data source for projects concerning predictive modeling.
 
 # Summary
 
