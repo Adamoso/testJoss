@@ -10,9 +10,6 @@ authors:
   - name: Adam Rydelek
     orcid: 0000-0002-4805-9015
     affiliation: 1
-  - name: Przemyslaw Biecek
-    orcid: 0000-0001-8423-1823
-    affiliation: 1
     
 affiliations:
  - name: Faculty of Mathematics and Information Science, Warsaw University of Technology
