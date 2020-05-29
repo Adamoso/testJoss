@@ -1,5 +1,5 @@
 ---
-title: 'xai2cloud: A R package for model cloud deployment'
+title: 'xai2cloud: An R package for model cloud deployment'
 tags:
   - R
   - XAI
@@ -10,6 +10,10 @@ authors:
   - name: Adam Rydelek
     orcid: 0000-0002-4805-9015
     affiliation: 1
+  - name: Przemyslaw Biecek
+    orcid: 0000-0001-8423-1823
+    affiliation: 1
+    
 affiliations:
  - name: Faculty of Mathematics and Information Science, Warsaw University of Technology
    index: 1
@@ -20,7 +24,7 @@ bibliography: paper.bib
 
 # Introduction
 
-Machine learning models are utilized in nearly every field of science and business. One of the most discussed topics lately has been the linkage between the model's utility and it's explainability. With the arising interest in explainable artificial intelligence many Interpretable Machine Learning tools emerged. Among the most outstanding solutions DALEX [@Biecek:2018], The What-If Tool [@Wexler:2019] and shap [@Lundberg:2017] should be mentioned.
+Machine learning models are utilized in nearly every field of science and business. One of the most discussed topics lately has been the linkage between the model's utility and it's explainability. With the arising interest in eXplainable Artificial Intelligence (XAI) many tools for exploring machine learning models emerged. Among the most popular solutions SHAP [@Lundberg:2017], DALEX [@Biecek:2018] and The What-If Tool [@Wexler:2019] should be mentioned.
 
 Humans process visual data better than raw numbers [@Alexandra:2010]. The whole goal of creating explainable models is to present the decision-making process and distinctly interpret the results. Thankfully some tools enable data scientists to visualize their results. DrWhy.AI repository consists not only of previously mentioned DALEX but also demonstration solutions like ingredients [@Biecek:2020], iBreakDown [@Gosiewska:2019] and modelStudio [@Baniecki:2019].
 
@@ -34,7 +38,7 @@ Despite cloud-based solutions being commonly associated with setup difficulty an
 
 The solution used for cloud computing is [DigitalOcean](https://www.digitalocean.com/). The platform is affordable and presents an intuitive website interface to keep track of all currently running droplets. Droplet is a name given by DigitalOcean for their Linux servers running on top of cloud-based hardware. Configuration of a new server is done entirely through R using the setup feature of the xai2cloud package which creates a new droplet with R version 3.6.3 and all the essential packages already installed.
 
-After the initial setup the deployment process is instant and intuitive. The package can deploy any model wrapped into an explainer with one R function. Explainers are adapters available for predictive models created using the DALEX package. This allows for sharing work progress on the run.
+After the initial setup the deployment process is instant and intuitive. The package can deploy any model wrapped into an explainer with one R function. Explainers are adapters available for predictive models created using the DALEX package. Deployed model is subsequently available on the server with XAI features enabling thorough exploration.
 
 # Deployment example
 
@@ -50,7 +54,9 @@ model <- glm(survived~., data = titanic_imputed, family = "binomial")
 
 # Wrap it into a DALEX explainer
 library(DALEX)
-exp_name <- explain(model, data = titanic_imputed[,-8], y = titanic_imputed$survived)
+exp_name <- explain(model, 
+                    data = titanic_imputed[,-8],
+                    y = titanic_imputed$survived)
 
 # Check droplet's ID
 library(analogsea)
@@ -68,13 +74,13 @@ deploy_explainer(exp_name, model_package = 'stats',
 
 # Features overview
 
-The deployed explainer is active as an application compliant to the representational state transfer architecture @REST:2000 operating on the droplet's server. It hosts five post and get hooks in total enabling the user to explore the model and its predictions. The features provided include not only a basic prediction of inputted data but also local model explanations:
+The deployed explainer is active as an application compliant to the representational state transfer architecture operating on the droplet's server [@REST:2000]. It hosts five post and get hooks in total enabling the user to explore the model and its predictions. The features provided include not only a basic prediction of inputted data but also local model explanations:
 
 ![Break Down (1) and Ceteris Paribus (2) plots for example model on Titanic data \label{fig:plots}](plots2.png)
 
 \newpage
 
-* Break Down [@Breakdown:2018] plots present the contribution of each variable to the prediction. There are two hooks associated with this feature, one creates the plot and returns it as an image, the other one is a description consisting of crucial information that can be gathered from the Break Down plot \autoref{fig:example} and is returned as a string.
+* Break Down [@Breakdown:2018] plots present the contribution of each variable to the prediction. There are two hooks associated with this feature, one creates the plot and returns it as an image, the other one is a description consisting of crucial information that can be gathered from the Break Down plot \autoref{fig:plots} and is returned as a string.
 
 * Ceteris Paribus [@Biecek:2018] plots from the Ingredients R package present model responses around a single point in the feature space. It enables the user to view possible changes in model predictions allowing for changes in a single variable while keeping all other features constant. The results are also available as both a plot and a text description summing up crucial conclusions.
 
