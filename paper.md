@@ -1,5 +1,5 @@
 ---
-title: 'xai2cloud: An R package for model cloud deployment'
+title: 'xai2cloud: the R package for automated deployment of machine learning models with XAI REST API to cloud'
 tags:
   - R
   - XAI
@@ -28,11 +28,11 @@ Machine learning models are utilized in nearly every field of science and busine
 
 Humans process visual data better than raw numbers [@Alexandra:2010]. The whole goal of creating explainable models is to present the decision-making process and distinctly interpret the results. Thankfully some tools enable data scientists to visualize their results. DrWhy.AI repository consists not only of previously mentioned DALEX but also demonstration solutions like ingredients [@Biecek:2020], iBreakDown [@Gosiewska:2019] and modelStudio [@Baniecki:2019].
 
-In conclusion there are solutions available that meet all the requirements for a data scientist to explain his model. The only issue is sharing those results. Models in the form of R objects cannot be attached to a report or presented during the project's workflow. Steps have been taken to combat this problem by the archivist [@Archivist:2017] R package. It enables storing inactive R object along with meta-data. There is a way to enhance this process and enable predictive models to be turned into an autonomous module working in the cloud.
+In conclusion there are solutions available that meet all the requirements for a data scientist to explain his model. The only issue is sharing those results. Models in the form of R [@R:2020] objects cannot be attached to a report or presented during the project's workflow. Steps have been taken to combat this problem by the archivist [@Archivist:2017] R package. It enables storing inactive R object along with meta-data. There is a way to enhance this process and enable predictive models to be turned into an autonomous module working in the cloud.
 
 # The xai2cloud package
 
-The xai2cloud R package automates the process of deploying the predictive model's results into a cloud-based RESTful application. The solution is built on top of the plumber [@Plumber:2020] and analogsea [@Analogsea:2020] R packages. Those tools combined with the use of DrWhy.AI [@DrWhy:2020] explainable AI solutions result in a complete appliance for sharing R models. 
+The xai2cloud R package automates the process of deploying predictive models into a cloud-based RESTful application. The solution is built on top of the plumber [@Plumber:2020] and analogsea [@Analogsea:2020] R packages. Those tools combined with the use of DrWhy.AI [@DrWhy:2020] explainable AI solutions result in a complete appliance for sharing R models. 
 
 Despite cloud-based solutions being commonly associated with setup difficulty and high entry threshold, xai2cloud is created with simplicity in mind. Configuration of the cloud environment is a one-time activity that is thoroughly explained at the package's [website](https://modeloriented.github.io/xai2cloud/). 
 
